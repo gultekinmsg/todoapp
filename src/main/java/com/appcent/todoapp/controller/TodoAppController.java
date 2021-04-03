@@ -1,9 +1,9 @@
-package com.appcent.controller;
+package com.appcent.todoapp.controller;
 
-import com.appcent.entity.TodoStatus;
-import com.appcent.model.TodoRequest;
-import com.appcent.model.TodoResponse;
-import com.appcent.service.TodoAppService;
+import com.appcent.todoapp.entity.TodoStatus;
+import com.appcent.todoapp.model.TodoRequest;
+import com.appcent.todoapp.model.TodoResponse;
+import com.appcent.todoapp.service.TodoAppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

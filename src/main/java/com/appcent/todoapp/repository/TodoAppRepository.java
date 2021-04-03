@@ -1,6 +1,6 @@
-package com.appcent.repository;
+package com.appcent.todoapp.repository;
 
-import com.appcent.entity.Todo;
+import com.appcent.todoapp.entity.Todo;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

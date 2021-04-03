@@ -1,4 +1,4 @@
-package com.appcent.entity;
+package com.appcent.todoapp.entity;
 
 public enum TodoStatus {
     ALL,

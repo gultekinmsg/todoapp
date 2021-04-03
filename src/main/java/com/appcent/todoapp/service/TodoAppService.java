@@ -1,11 +1,11 @@
-package com.appcent.service;
+package com.appcent.todoapp.service;
 
-import com.appcent.entity.Todo;
-import com.appcent.entity.TodoStatus;
-import com.appcent.mapper.TodoAppMapper;
-import com.appcent.model.TodoRequest;
-import com.appcent.model.TodoResponse;
-import com.appcent.repository.TodoAppRepository;
+import com.appcent.todoapp.entity.Todo;
+import com.appcent.todoapp.entity.TodoStatus;
+import com.appcent.todoapp.mapper.TodoAppMapper;
+import com.appcent.todoapp.model.TodoRequest;
+import com.appcent.todoapp.model.TodoResponse;
+import com.appcent.todoapp.repository.TodoAppRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

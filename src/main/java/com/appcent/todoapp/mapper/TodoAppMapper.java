@@ -1,8 +1,8 @@
-package com.appcent.mapper;
+package com.appcent.todoapp.mapper;
 
-import com.appcent.entity.Todo;
-import com.appcent.model.TodoRequest;
-import com.appcent.model.TodoResponse;
+import com.appcent.todoapp.entity.Todo;
+import com.appcent.todoapp.model.TodoRequest;
+import com.appcent.todoapp.model.TodoResponse;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

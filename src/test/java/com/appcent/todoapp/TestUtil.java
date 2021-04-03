@@ -1,7 +1,7 @@
 package com.appcent.todoapp;
 
-import com.appcent.entity.Todo;
-import com.appcent.model.TodoRequest;
+import com.appcent.todoapp.entity.Todo;
+import com.appcent.todoapp.model.TodoRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.time.LocalDateTime;

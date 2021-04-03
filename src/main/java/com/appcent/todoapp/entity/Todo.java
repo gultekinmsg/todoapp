@@ -1,4 +1,4 @@
-package com.appcent.entity;
+package com.appcent.todoapp.entity;
 
 import lombok.Getter;
 import lombok.Setter;

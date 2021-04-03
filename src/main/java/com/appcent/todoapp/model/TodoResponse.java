@@ -1,4 +1,4 @@
-package com.appcent.model;
+package com.appcent.todoapp.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
