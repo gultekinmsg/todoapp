@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  todoapp:
+    build: .
+    ports:
+      - 8081:8081
+    networks:
+      - todonet
+    depends_on:
+      - tododb
+  tododb:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'tododb'
+      MYSQL_USER: 'todousr'
+      MYSQL_PASSWORD: 'todopass'
+      MYSQL_ROOT_PASSWORD: 'rootpass'
+    ports:
+      - 3306:3306
+    volumes:
+      - tododb-data:/var/lib/mysql
+    networks:
+      - todonet
+volumes:
+  tododb-data:
+networks:
+  todonet:
+
