@@ -1,9 +1,10 @@
-package com.appcent.todoapp;
+package com.appcent.todoapp.service;
 
+import com.appcent.todoapp.TestUtil;
+import com.appcent.todoapp.entity.Todo;
 import com.appcent.todoapp.mapper.TodoAppMapper;
 import com.appcent.todoapp.model.TodoResponse;
 import com.appcent.todoapp.repository.TodoAppRepository;
-import com.appcent.todoapp.service.TodoAppService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,8 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -27,26 +27,29 @@ class TodoAppServiceTest {
 
     @Test
     void createTodo_GivenRequestHasApprovedWhenTryToCreateTodoThenShouldCreateSuccessfully() {
-
+        ResponseStatusException expectedException = null;
+        try {
+            todoAppService.createTodo(TestUtil.getWaitingTodoRequest());
+        } catch (ResponseStatusException ex) {
+            expectedException = ex;
+        }
+        assertNull(expectedException);
     }
 
     @Test
     void deleteTodo_GivenRequestHasReturnInDbWhileTryDeleteTodoThenShouldDelete() {
-
+        when(todoAppRepository.findTodoById(1L)).thenReturn(TestUtil.setWaitingTodo());
+        ResponseStatusException expectedException = null;
+        try {
+            todoAppService.deleteTodo(1L);
+        } catch (ResponseStatusException ex) {
+            expectedException = ex;
+        }
+        assertNull(expectedException);
     }
 
     @Test
     void deleteTodo_GivenRequestHasNotReturnInDbWhileTryDeleteTodoThenShouldThrowNotFoundException() {
-
-    }
-
-    @Test
-    void changeStatus_TodoGivenRequestHasReturnInDbWhileTryChangeStatusTodoThenShouldDelete() {
-
-    }
-
-    @Test
-    void changeStatus_TodoGivenRequestHasNotReturnInDbWhileTryChangeStatusThenShouldThrowNotFoundException() {
         when(todoAppRepository.findTodoById(1L)).thenReturn(null);
         ResponseStatusException expectedException = null;
         try {
@@ -58,10 +61,35 @@ class TodoAppServiceTest {
     }
 
     @Test
+    void changeStatus_TodoGivenRequestHasReturnInDbWhileTryChangeStatusTodoThenShouldDelete() {
+        when(todoAppRepository.findTodoById(1L)).thenReturn(TestUtil.setCompletedTodo());
+        ResponseStatusException expectedException = null;
+        try {
+            todoAppService.changeStatusTodo(1L);
+        } catch (ResponseStatusException ex) {
+            expectedException = ex;
+        }
+        assertNull(expectedException);
+    }
+
+    @Test
+    void changeStatus_TodoGivenRequestHasNotReturnInDbWhileTryChangeStatusThenShouldThrowNotFoundException() {
+        when(todoAppRepository.findTodoById(1L)).thenReturn(null);
+        ResponseStatusException expectedException = null;
+        try {
+            todoAppService.changeStatusTodo(1L);
+        } catch (ResponseStatusException ex) {
+            expectedException = ex;
+        }
+        assertNotNull(expectedException);
+    }
+
+    @Test
     void getAllTodos_TodosExistInDbWhenTryToGetAllBillsThenShouldReturnAllTodos() {
-        when(todoAppRepository.findAll()).thenReturn(TestUtil.getAllTodoList());
+        List<Todo> todoLists = TestUtil.getAllTodoList();
+        when(todoAppRepository.findAll()).thenReturn(todoLists);
         List<TodoResponse> todoList = todoAppService.getAllTodos();
-        assertEquals(todoList, TodoAppMapper.toModels(TestUtil.getAllTodoList()));
+        assertEquals(todoList, TodoAppMapper.toModels(todoLists));
     }
 
     @Test
@@ -78,9 +106,10 @@ class TodoAppServiceTest {
 
     @Test
     void getCompletedTodos_CompletedTodosExistInDbWhenTryToGetCompletedBillsThenShouldReturnCompletedTodos() {
-        when(todoAppRepository.findByIsCompletedOrderByLocalDateTimeDesc(true)).thenReturn(TestUtil.getCompletedTodoList());
+        List<Todo> todoLists = TestUtil.getCompletedTodoList();
+        when(todoAppRepository.findByIsCompletedOrderByLocalDateTimeDesc(true)).thenReturn(todoLists);
         List<TodoResponse> todoList = todoAppService.getCompletedTodos();
-        assertEquals(todoList, TodoAppMapper.toModels(TestUtil.getCompletedTodoList()));
+        assertEquals(todoList, TodoAppMapper.toModels(todoLists));
     }
 
     @Test
@@ -97,9 +126,10 @@ class TodoAppServiceTest {
 
     @Test
     void getWaitingTodos_WaitingTodosExistInDbWhenTryToGetWaitingBillsThenShouldReturnWaitingTodos() {
-        when(todoAppRepository.findByIsCompletedOrderByLocalDateTimeDesc(false)).thenReturn(TestUtil.getWaitingTodoList());
+        List<Todo> todoLists = TestUtil.getWaitingTodoList();
+        when(todoAppRepository.findByIsCompletedOrderByLocalDateTimeDesc(false)).thenReturn(todoLists);
         List<TodoResponse> todoList = todoAppService.getWaitingTodos();
-        assertEquals(todoList, TodoAppMapper.toModels(TestUtil.getWaitingTodoList()));
+        assertEquals(todoList, TodoAppMapper.toModels(todoLists));
     }
 
     @Test

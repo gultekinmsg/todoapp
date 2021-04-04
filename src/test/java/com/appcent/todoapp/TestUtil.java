@@ -12,21 +12,21 @@ public class TestUtil {
     private TestUtil() {
     }
 
-    protected static TodoRequest getCompleteTodoRequest() {
+    public static TodoRequest getCompleteTodoRequest() {
         TodoRequest todoRequest = new TodoRequest();
         todoRequest.setName("Complete todoRequest");
         todoRequest.setIsCompleted(true);
         return todoRequest;
     }
 
-    protected static TodoRequest getWaitingTodoRequest() {
+    public static TodoRequest getWaitingTodoRequest() {
         TodoRequest todoRequest = new TodoRequest();
         todoRequest.setName("Waiting todoRequest");
         todoRequest.setIsCompleted(true);
         return todoRequest;
     }
 
-    protected static String asJsonString(final Object obj) {
+    public static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);
         } catch (Exception e) {
@@ -34,26 +34,26 @@ public class TestUtil {
         }
     }
 
-    protected static List<Todo> getAllTodoList() {
+    public static List<Todo> getAllTodoList() {
         List<Todo> allTodoList = new ArrayList<>();
         allTodoList.add(setCompletedTodo());
         allTodoList.add(setWaitingTodo());
         return allTodoList;
     }
 
-    protected static List<Todo> getCompletedTodoList() {
+    public static List<Todo> getCompletedTodoList() {
         List<Todo> completedTodoList = new ArrayList<>();
         completedTodoList.add(setCompletedTodo());
         return completedTodoList;
     }
 
-    protected static List<Todo> getWaitingTodoList() {
+    public static List<Todo> getWaitingTodoList() {
         List<Todo> waitingTodoList = new ArrayList<>();
         waitingTodoList.add(setWaitingTodo());
         return waitingTodoList;
     }
 
-    protected static Todo setCompletedTodo() {
+    public static Todo setCompletedTodo() {
         Todo todo = new Todo();
         todo.setName("Complete project");
         todo.setIsCompleted(true);
@@ -61,7 +61,7 @@ public class TestUtil {
         return todo;
     }
 
-    protected static Todo setWaitingTodo() {
+    public static Todo setWaitingTodo() {
         Todo todo = new Todo();
         todo.setName("Waiting project");
         todo.setIsCompleted(false);
