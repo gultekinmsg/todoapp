@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "f1974e17-2beb-4ebe-a2da-c4b34a45bffb",
+		"name": "appcentDev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Todo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Finish Application\",\r\n    \"isCompleted\": \"false\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChangerStatus Todo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Todo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll Todo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/?status=ALL",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "ALL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCompletedTodo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/?status=COMPLETED",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "COMPLETED"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWaiting Todo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/?status=WAITING",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "WAITING"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
