@@ -139,6 +139,25 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Swagger Documantation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/v2/api-docs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v2",
+						"api-docs"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
